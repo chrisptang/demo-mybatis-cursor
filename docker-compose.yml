@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    restart: always
+    links: 
+      - db_local
+    ports:
+      - 4000:8080
+
+  db_local:
+    image: mysql:8.0.32
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - 3306:3306
